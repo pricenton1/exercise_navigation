@@ -21,4 +21,9 @@
     <string name="name_confirmation">Name Confirmation</string>
     <string name="amount_confirmation">Amount Confirmation</string>
     <string name="done">DONE</string>
+
+    <string name="sent_to_person">Sent to Person</string>
+    <string name="account_number">account number</string>
+    <string name="amount_sent">Rp. amount</string>
+    <string name="bank">bank</string>
 </resources>

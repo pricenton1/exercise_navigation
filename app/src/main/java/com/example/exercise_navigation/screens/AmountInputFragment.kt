@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.exercise_navigation.R
+import com.example.exercise_navigation.view_model.TransactionViewModel
 import kotlinx.android.synthetic.main.fragment_amount_input.*
 
 /**
@@ -18,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_amount_input.*
 class AmountInputFragment : Fragment(),View.OnClickListener {
 
     lateinit var navController: NavController
+    val transactionViewModel by activityViewModels<TransactionViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +38,20 @@ class AmountInputFragment : Fragment(),View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        username.text = "TO :"+arguments?.getString("USERNAME")
+//        username.text = "TO :"+arguments?.getString("USERNAME")
         button_send.setOnClickListener(this)
+        transactionViewModel.name.observe(viewLifecycleOwner, Observer { showName(it) })
+    }
 
+    fun showName(name:String){
+        val s = "To: $name"
+        username.text = s
     }
 
     override fun onClick(v: View?) {
         when(v){
             button_send -> {
+                transactionViewModel.setAmount(amount_transfer.text.toString())
                 navController.navigate(R.id.action_amountInputFragment_to_confirmationFragment)
             }
         }

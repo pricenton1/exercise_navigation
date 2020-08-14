@@ -5,20 +5,22 @@
     android:id="@+id/navigation_main"
     app:startDestination="@id/homeFragment">
 
+    <action
+        android:id="@+id/action_homeFragment_to_balanceFragment"
+        app:destination="@id/balanceFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_historyTransactionFragment"
+        app:destination="@id/historyTransactionFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_transactionActivity"
+        app:destination="@id/transactionActivity" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.exercise_navigation.screens.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_balanceFragment"
-            app:destination="@id/balanceFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_historyTransactionFragment"
-            app:destination="@id/historyTransactionFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_transactionActivity"
-            app:destination="@id/transactionActivity" />
+
     </fragment>
     <fragment
         android:id="@+id/balanceFragment"
